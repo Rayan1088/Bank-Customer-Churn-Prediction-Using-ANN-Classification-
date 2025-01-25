@@ -6,7 +6,7 @@ import pickle
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 
 # Load the model
-model = tf.keras.models.load_model('ANN_model.h5')
+model = tf.keras.models.load_model('Updated_ANN_classification_model.h5')
 
 # Load the encoders and scaler
 with open('lable_Encoding_gender.pkl', 'rb') as file:
@@ -19,7 +19,7 @@ with open('Feature_scaling.pkl', 'rb') as file:
     feature_scaler = pickle.load(file)   
     
 # Streamlit App
-st.title('Bank Customer Churn Prediction')
+st.title('Estimated Salary Prediction')
 
 # Input Features
 
@@ -36,6 +36,7 @@ tenure=st.slider('Tenure',0,10)
 
 has_credit_card=st.selectbox('Has Credit Card', [0,1], format_func=lambda x: 'Yes' if x == 1 else 'No')
 is_active_member=st.selectbox('Is Active Member', [0,1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+
 
 # Prepare the input features
 input_features_df = pd.DataFrame({'CreditScore': [credit_score],
@@ -69,5 +70,4 @@ st.write('The Probabilistic Value of prediction:', The_Probabilistic_Value_of_pr
 if The_Probabilistic_Value_of_prediction > 0.5:
     st.write("The Customer will leave the Bank")
 else:
-    st.write("The Customer will not leave the Bank")
-    
+    st.write("The Customer will not leave the Bank")   
