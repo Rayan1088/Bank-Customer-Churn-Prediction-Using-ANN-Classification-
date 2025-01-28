@@ -64,10 +64,8 @@ scaled_input_features = feature_scaler.transform(input_features_df)
 prediction = model.predict(scaled_input_features)
 The_Probabilistic_Value_of_prediction = prediction[0][0]
 
-# Display the prediction on streamlit
-st.write('The Probabilistic Value of prediction:', The_Probabilistic_Value_of_prediction)
-
-if The_Probabilistic_Value_of_prediction > 0.5:
-    st.write("The Customer will leave the Bank")
-else:
-    st.write("The Customer will not leave the Bank")   
+if st.button('Predict Churn'):
+    if The_Probabilistic_Value_of_prediction > 0.5:
+        st.write("The Customer will leave the Bank")
+    else:
+        st.write("The Customer will not leave the Bank")   
